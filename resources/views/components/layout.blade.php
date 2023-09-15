@@ -19,12 +19,14 @@
 
                         <div class="mt-4">
                             <h1 class="text-3xl">
-                                {{ $posts[0]->title }}
+                                <a href="{{ route('post', $posts[0]->slug) }}">
+                                    {{ $posts[0]->title }}
+                                </a>
                             </h1>
 
                             <span class="mt-2 block text-gray-400 text-xs">
-                                    Published: <time>{{ $posts[0]->created_at->diffForHumans() }}</time>
-                                </span>
+                                Published: <time>{{ $posts[0]->created_at->diffForHumans() }}</time>
+                            </span>
                         </div>
                     </header>
 
@@ -75,7 +77,9 @@
 
                                 <div class="mt-4">
                                     <h1 class="text-3xl">
-                                        {{ $post->title }}
+                                        <a href="{{ route('post', $post->slug) }}">
+                                            {{ $post->title }}
+                                        </a>
                                     </h1>
 
                                     <span class="mt-2 block text-gray-400 text-xs">
