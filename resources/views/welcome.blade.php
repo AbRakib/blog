@@ -14,4 +14,6 @@
         @include('components.footer')
 
     </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.0/cdn.js" integrity="sha512-kABigH+locGcvvX9sgOGm0JP4iDKUQzti7/HfbX+3ECCP2pmb13F6/ImQtVpSvrnNQHewqNMojAykCIw7z04LQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>

@@ -12,7 +12,7 @@
                 <div class="flex-1 flex flex-col justify-between">
                     <header class="mt-8 lg:mt-0">
                         <div class="space-x-2">
-                            <a href="#"
+                            <a href="{{ route('category', $posts[0]->category->slug) }}"
                             class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
                             style="font-size: 10px">{{ $posts[0]->category->title }}</a>
                         </div>
@@ -35,7 +35,7 @@
                     </div>
 
                     <footer class="flex justify-between items-center mt-8">
-                        <div class="flex items-center text-sm">
+                        <div class="flex items-center text-sm w-3/5">
                             <img src="{{ asset('images/lary-avatar.svg') }}" alt="Lary avatar">
                             <div class="ml-3">
                                 <h5 class="font-bold">{{ $posts[0]->user->name }}</h5>
@@ -69,7 +69,7 @@
                         <div class="mt-8 flex flex-col justify-between">
                             <header>
                                 <div class="space-x-2">
-                                    <a href="#"
+                                    <a href="{{ route('category', $post->category->slug) }}"
                                     class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
                                     style="font-size: 10px">
                                     {{ $post->category->title }} </a>

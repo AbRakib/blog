@@ -15,7 +15,7 @@ class CategoryFactory extends Factory {
      */
     public function definition(): array {
         return [
-            'title' => fake()->sentence( 3 ),
+            'title' => fake()->word( 1 ),
             'slug'  => fake()->slug(),
             'body'  => fake()->text( 50 ),
         ];

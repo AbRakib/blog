@@ -14,12 +14,20 @@
     <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-8">
         <!--  Category -->
         <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl">
-            <select class="flex-1 appearance-none bg-transparent py-2 pl-3 pr-9 text-sm font-semibold">
-                <option value="category" disabled selected>Category
-                </option>
-                <option value="personal">Personal</option>
-                <option value="business">Business</option>
-            </select>
+
+            <div x-data="{ show: false }" class="w-full">
+                {{-- Tigger category --}}
+                <button @click="show = ! show" @click.away="show=false" class="w-full bg-transparent py-2 pl-3 pr-9 text-sm font-semibold lg:w-32 flex lg:inline-flex">
+                    {{ isset($currentCategory) ? ucwords($currentCategory->title) : 'Categories' }}
+                </button>
+
+                {{-- dropdown category --}}
+                <div x-show="show" class="py-2 absolute w-32 bg-gray-100 rounded-xl mt-2 w-full">
+                    @foreach ($categories as $category)
+                        <a class="block w-full text-left px-3 text-sm leading-6 hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white {{ isset($currentCategory) && $currentCategory->is($category) ? 'bg-blue-500 text-white' : '' }}" href="{{route('category', $category->slug)}}">{{ ucwords($category->title) }}</a>
+                    @endforeach
+                </div>
+            </div>
 
             <svg class="transform -rotate-90 absolute pointer-events-none" style="right: 12px;" width="22"
                  height="22" viewBox="0 0 22 22">

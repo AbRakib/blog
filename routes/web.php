@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
@@ -13,11 +15,13 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
+ */
 
-Route::get('/', function () {
+Route::get( '/', function () {
     $posts = Post::latest()->get();
-    return view('components.layout', compact('posts'));
-})->name('home');
+    $categories = Category::latest()->get();
+    return view( 'components.layout', compact( 'posts', 'categories' ) );
+} )->name( 'home' );
 
-Route::get('/post/{slug}', [PostController::class, 'show'])->name('post');
+Route::get( '/post/{slug}', [PostController::class, 'show'] )->name( 'post' );
+Route::get( '/category/{slug}', [CategoryController::class, 'show'] )->name( 'category' );
