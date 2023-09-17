@@ -37,7 +37,7 @@ class CategoryController extends Controller {
         $currentCategory = Category::where('slug', $slug)->first();
         $id = Category::where('slug', $slug)->first();
         $id = $id->id;
-        $posts = Post::where('category_id', $id)->get();
+        $posts = Post::where('category_id', $id)->paginate(9);
         return view('posts.index', compact('posts', 'categories', 'currentCategory'));
     }
 

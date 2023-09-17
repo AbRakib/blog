@@ -13,7 +13,7 @@
                     <header class="mt-8 lg:mt-0">
                         <div class="space-x-2">
                             <a href="{{ route('category', $posts[0]->category->slug) }}"
-                            class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
+                            class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold hover:text-white hover:bg-blue-500"
                             style="font-size: 10px">{{ $posts[0]->category->title }}</a>
                         </div>
 
@@ -38,7 +38,11 @@
                         <div class="flex items-center text-sm w-3/5">
                             <img src="{{ asset('images/lary-avatar.svg') }}" alt="Lary avatar">
                             <div class="ml-3">
-                                <h5 class="font-bold">{{ $posts[0]->user->name }}</h5>
+                                <h5 class="font-bold">
+                                    <a class="text-yellow-500 hover:text-pink-500" href="{{route('author', $posts[0]->user->slug)}}">
+                                        {{ $posts[0]->user->name }}
+                                    </a>
+                                </h5>
                                 <h6>Mascot at Laracasts</h6>
                             </div>
                         </div>
@@ -70,7 +74,7 @@
                             <header>
                                 <div class="space-x-2">
                                     <a href="{{ route('category', $post->category->slug) }}"
-                                    class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
+                                    class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold hover:text-white hover:bg-blue-500"
                                     style="font-size: 10px">
                                     {{ $post->category->title }} </a>
                                 </div>
@@ -98,7 +102,11 @@
                                 <div class="flex items-center text-sm">
                                     <img src="{{ asset('images/lary-avatar.svg') }}" alt="Lary avatar">
                                     <div class="ml-3">
-                                        <h5 class="font-bold">{{ $post->user->name }}</h5>
+                                        <h5 class="font-bold">
+                                            <a class="text-yellow-500 hover:text-pink-500" href="{{route('author', $post->user->slug)}}">
+                                                {{ $post->user->name }}
+                                            </a>
+                                        </h5>
                                         <h6>Mascot at Laracasts</h6>
                                     </div>
                                 </div>
@@ -114,6 +122,7 @@
                 </article>
             @endforeach
         </div>
+        {{ $posts->links() }}
     @else
         <p class="text-center font-bold">No posts yet. Please check back later.</p>
     @endif

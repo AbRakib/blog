@@ -20,7 +20,7 @@ class PostFactory extends Factory {
             'slug'        => fake()->slug(),
             'title'       => fake()->sentence( 5 ),
             'excerpt'     => fake()->paragraph( 10 ),
-            'body'        => fake()->paragraph(20),
+            'body'        => fake()->paragraph(40),
         ];
     }
 }

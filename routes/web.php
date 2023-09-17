@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +19,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ PostController::class, 'index'])->name('home');
 Route::get( '/post/{slug}', [PostController::class, 'show'] )->name( 'post' );
 Route::get( '/category/{slug}', [CategoryController::class, 'show'] )->name( 'category' );
+Route::get('/author/{slug}', [UserController::class, 'show'])->name('author');
 

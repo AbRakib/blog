@@ -4,23 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class PostController extends Controller {
+class UserController extends Controller {
     /**
      * Display a listing of the resource.
      */
     public function index() {
-        if ( request( 'search' ) ) {
-            $posts = Post::latest()
-                ->where( 'title', 'like', '%' . request( 'search' ) . '%' )
-                ->orWhere( 'body', 'like', '%' . request( 'search' ) . '%' )
-                ->get();
-        } else {
-            $posts = Post::latest()->paginate(9)->withQueryString();
-        }
-        $categories = Category::latest()->get();
-        return view('posts.index', compact( 'posts', 'categories' ) );
+        
     }
 
     /**
@@ -41,9 +33,11 @@ class PostController extends Controller {
      * Display the specified resource.
      */
     public function show( string $slug ) {
-        $post = Post::where( 'slug', $slug )->first();
         $categories = Category::latest()->get();
-        return view( 'posts.show', compact( 'post', 'categories' ) );
+        $user = User::where('slug', $slug)->first();
+        $id = $user->id;
+        $posts = Post::where('user_id', $id)->paginate(5);
+        return view('posts.index', compact('posts', 'categories'));
     }
 
     /**

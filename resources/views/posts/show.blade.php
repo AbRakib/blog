@@ -12,7 +12,11 @@
             <div class="flex items-center lg:justify-center text-sm mt-4">
                 <img src="{{asset('/images/lary-avatar.svg')}}" alt="Lary avatar">
                 <div class="ml-3 text-left">
-                    <h5 class="font-bold"> {{ $post->user->name }} </h5>
+                    <h5 class="font-bold"> 
+                        <a class="text-yellow-500 hover:text-pink-500" href="{{route('author', $post->user->slug)}}">
+                            {{ $post->user->name }}
+                        </a>
+                    </h5>
                     <h6>Mascot at Laracasts</h6>
                 </div>
             </div>
@@ -37,7 +41,7 @@
 
                 <div class="space-x-2">
                     <a href="#"
-                        class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
+                        class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold hover:text-white hover:bg-blue-500"
                         style="font-size: 10px">
                         {{ $post->category->title }}
                     </a>
