@@ -33,7 +33,6 @@ class CategoryController extends Controller {
      * Display the specified resource.
      */
     public function show( string $slug ) {
-        // $posts = Post::latest()->get();
         $categories = Category::latest()->get();
         $currentCategory = Category::where('slug', $slug)->first();
         $id = Category::where('slug', $slug)->first();

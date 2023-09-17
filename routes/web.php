@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,11 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get( '/', function () {
-    $posts = Post::latest()->get();
-    $categories = Category::latest()->get();
-    return view( 'components.layout', compact( 'posts', 'categories' ) );
-} )->name( 'home' );
-
+Route::get('/', [ PostController::class, 'index'])->name('home');
 Route::get( '/post/{slug}', [PostController::class, 'show'] )->name( 'post' );
 Route::get( '/category/{slug}', [CategoryController::class, 'show'] )->name( 'category' );
+

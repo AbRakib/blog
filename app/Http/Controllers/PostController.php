@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,16 @@ class PostController extends Controller {
      * Display a listing of the resource.
      */
     public function index() {
-        //
+        if ( request( 'search' ) ) {
+            $posts = Post::latest()
+                ->where( 'title', 'like', '%' . request( 'search' ) . '%' )
+                ->orWhere( 'body', 'like', '%' . request( 'search' ) . '%' )
+                ->get();
+        } else {
+            $posts = Post::latest()->get();
+        }
+        $categories = Category::latest()->get();
+        return view( 'components.layout', compact( 'posts', 'categories' ) );
     }
 
     /**
@@ -31,8 +41,9 @@ class PostController extends Controller {
      * Display the specified resource.
      */
     public function show( string $slug ) {
-        $post = Post::where('slug', $slug)->first();
-        return view('pages.post', compact('post'));
+        $post = Post::where( 'slug', $slug )->first();
+        $categories = Category::latest()->get();
+        return view( 'pages.post', compact( 'post', 'categories' ) );
     }
 
     /**
