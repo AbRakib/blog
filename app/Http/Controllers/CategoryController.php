@@ -38,7 +38,7 @@ class CategoryController extends Controller {
         $id = Category::where('slug', $slug)->first();
         $id = $id->id;
         $posts = Post::where('category_id', $id)->get();
-        return view('components.layout', compact('posts', 'categories', 'currentCategory'));
+        return view('posts.index', compact('posts', 'categories', 'currentCategory'));
     }
 
     /**

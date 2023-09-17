@@ -20,7 +20,7 @@ class PostController extends Controller {
             $posts = Post::latest()->get();
         }
         $categories = Category::latest()->get();
-        return view( 'components.layout', compact( 'posts', 'categories' ) );
+        return view( 'posts.index', compact( 'posts', 'categories' ) );
     }
 
     /**
@@ -43,7 +43,7 @@ class PostController extends Controller {
     public function show( string $slug ) {
         $post = Post::where( 'slug', $slug )->first();
         $categories = Category::latest()->get();
-        return view( 'pages.post', compact( 'post', 'categories' ) );
+        return view( 'posts.show', compact( 'post', 'categories' ) );
     }
 
     /**
