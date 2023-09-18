@@ -1,3 +1,4 @@
+@if (isset($categories))
 <header class="max-w-xl mx-auto mt-20 text-center">
     <h1 class="text-4xl">
         Latest <span class="text-blue-500">Laravel From Scratch</span> News
@@ -15,9 +16,11 @@
 
                 {{-- dropdown category --}}
                 <div x-show="show" class="py-2 absolute w-32 bg-gray-100 rounded-xl mt-2 w-full overflow-auto max-h-52">
-                    @foreach ($categories as $category)
-                        <a class="block w-full text-left px-3 text-sm leading-6 hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white {{ isset($currentCategory) && $currentCategory->is($category) ? 'bg-blue-500 text-white' : '' }}" href="{{route('category', $category->slug)}}">{{ ucwords($category->title) }}</a>
-                    @endforeach
+                    
+                        @foreach ($categories as $category)
+                            <a class="block w-full text-left px-3 text-sm leading-6 hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white {{ isset($currentCategory) && $currentCategory->is($category) ? 'bg-blue-500 text-white' : '' }}" href="{{route('category', $category->slug)}}">{{ ucwords($category->title) }}</a>
+                        @endforeach
+                    
                 </div>
             </div>
 
@@ -40,3 +43,4 @@
         </div>
     </div>
 </header>
+@endif
