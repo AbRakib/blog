@@ -58,6 +58,26 @@
                 </p>
             </div>
         </div>
+
+        {{-- comments section  --}}
+        <section class="col-span-8 col-start-5 mt-10">
+            <article class="flex bg-gray-100 p-6 rounded-xl border border-gray-200 space-x-4">
+                <div class="">
+                    <img class="w-32 rounded-xl" src="{{asset('/images/lary-avatar.svg')}}" alt="">
+                </div>
+                <div>
+                    <header>
+                        <h3 class="font-bold">Jone Doe</h3>
+                        <p class="text-xs mb-4">Posted 
+                            <time>8 month ago</time>
+                        </p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus placeat distinctio ducimus odit porro, rem, minima magnam esse facere inventore et in modi accusantium illo! A voluptate rerum explicabo perspiciatis?</p>
+                    </header>
+                </div>
+            </article>
+        </section>
+        {{-- end comment section --}}
+
     </article>
 </main>
 @endsection
