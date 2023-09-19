@@ -11,13 +11,16 @@ return new class extends Migration {
     public function up(): void {
         Schema::create( 'posts', function ( Blueprint $table ) {
             $table->id();
-            $table->integer( 'user_id' );
-            $table->integer( 'category_id' );
+            $table->unsignedBigInteger( 'user_id' );
+            $table->unsignedBigInteger( 'category_id' );
             $table->string( 'slug' )->unique();
             $table->string( 'title' );
             $table->text( 'excerpt' );
             $table->text( 'body' );
             $table->timestamps();
+
+            // $table->foreign( 'user_id' )->references( 'id' )->on( 'users' )->onDelete( 'cascade' );
+            // $table->foreign( 'category_id' )->references( 'id' )->on( 'categories' )->onDelete( 'cascade' );
         } );
     }
 

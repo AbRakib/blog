@@ -15,7 +15,7 @@ class PostFactory extends Factory {
      */
     public function definition(): array {
         return [
-            'user_id'     => fake()->numberBetween( 1, 5 ),
+            'user_id'     => fake()->numberBetween( 1, 10 ),
             'category_id' => fake()->numberBetween( 1, 5 ),
             'slug'        => fake()->slug(),
             'title'       => fake()->sentence( 5 ),
