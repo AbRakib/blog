@@ -10,10 +10,10 @@
             </p>
 
             <div class="flex items-center lg:justify-center text-sm mt-4">
-                <img src="{{asset('/images/lary-avatar.svg')}}" alt="Lary avatar">
+                <img class="w-10" src="{{ asset('images/avatar.png') }}" alt="Lary avatar">
                 <div class="ml-3 text-left">
                     <h5 class="font-bold"> 
-                        <a class="text-yellow-500 hover:text-pink-500" href="{{route('author', $post->user->slug)}}">
+                        <a class="text-yellow-500 hover:text-pink-500 transition" href="{{route('author', $post->user->slug)}}">
                             {{ $post->user->name }}
                         </a>
                     </h5>
@@ -35,12 +35,10 @@
                             </path>
                         </g>
                     </svg>
-
                     Back to Posts
                 </a>
-
                 <div class="space-x-2">
-                    <a href="#"
+                    <a href="{{ route('category', $post->category->slug) }}"
                         class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold hover:text-white hover:bg-blue-500"
                         style="font-size: 10px">
                         {{ $post->category->title }}
@@ -48,7 +46,7 @@
                 </div>
             </div>
 
-            <h1 class="font-bold text-3xl lg:text-4xl mb-10">
+            <h1 class="font-bold text-3xl lg:text-4xl mb-10 text-yellow-500 hover:text-pink-500 transition">
                 {{ $post->title }}
             </h1>
 
@@ -65,7 +63,7 @@
             <form class="border border-gray-200 p-6 rounded-xl" action="{{route('comment.store', $post->slug)}}" method="post">
                 @csrf
                 <header class="flex items-center">
-                    <img src="{{asset('/images/lary-avatar.svg')}}" alt="" width="40" height="40" class="rounded-full">
+                    <img class="w-10" src="{{ asset('images/avatar.png') }}" alt="" width="40" height="40" class="rounded-full">
                     <h2 class="ml-4">Want to participate?</h2>
                 </header>
                 <div class="mt-6">
@@ -82,7 +80,7 @@
             @foreach ($post->comments as $comment)
                 <article class="flex bg-gray-100 p-6 rounded-xl border border-gray-200 space-x-4">
                     <div class="w-1/5">
-                        <img class="w-32 rounded-xl" src="{{asset('/images/lary-avatar.svg')}}" alt="">
+                        <img class="rounded-xl w-10" src="{{ asset('images/avatar.png') }}" alt="">
                     </div>
                     <div>
                         <header>

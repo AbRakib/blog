@@ -19,7 +19,7 @@
 
                         <div class="mt-4">
                             <h1 class="text-3xl">
-                                <a href="{{ route('post', $posts[0]->slug) }}">
+                                <a class="hover:text-yellow-500 transition" href="{{ route('post', $posts[0]->slug) }}">
                                     {{ $posts[0]->title }}
                                 </a>
                             </h1>
@@ -36,10 +36,10 @@
 
                     <footer class="flex justify-between items-center mt-8">
                         <div class="flex items-center text-sm w-3/5">
-                            <img src="{{ asset('images/lary-avatar.svg') }}" alt="Lary avatar">
+                            <img class="w-10" src="{{ asset('images/avatar.png') }}" alt="Lary avatar">
                             <div class="ml-3">
                                 <h5 class="font-bold">
-                                    <a class="text-yellow-500 hover:text-pink-500" href="{{route('author', $posts[0]->user->slug)}}">
+                                    <a class="text-yellow-500 hover:text-pink-500 transition" href="{{route('author', $posts[0]->user->slug)}}">
                                         {{ $posts[0]->user->name }}
                                     </a>
                                 </h5>
@@ -81,7 +81,7 @@
 
                                 <div class="mt-4">
                                     <h1 class="text-3xl">
-                                        <a href="{{ route('post', $post->slug) }}">
+                                        <a class="hover:text-yellow-500 transition" href="{{ route('post', $post->slug) }}">
                                             {{ $post->title }}
                                         </a>
                                     </h1>
@@ -100,10 +100,10 @@
 
                             <footer class="flex justify-between items-center mt-8">
                                 <div class="flex items-center text-sm">
-                                    <img src="{{ asset('images/lary-avatar.svg') }}" alt="Lary avatar">
+                                    <img class="w-10" src="{{ asset('images/avatar.png') }}" alt="Lary avatar">
                                     <div class="ml-3">
                                         <h5 class="font-bold">
-                                            <a class="text-yellow-500 hover:text-pink-500" href="{{route('author', $post->user->slug)}}">
+                                            <a class="text-yellow-500 hover:text-pink-500 transition" href="{{route('author', $post->user->slug)}}">
                                                 {{ $post->user->name }}
                                             </a>
                                         </h5>
