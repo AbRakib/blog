@@ -60,21 +60,42 @@
         </div>
 
         {{-- comments section  --}}
-        <section class="col-span-8 col-start-5 mt-10">
-            <article class="flex bg-gray-100 p-6 rounded-xl border border-gray-200 space-x-4">
-                <div class="">
-                    <img class="w-32 rounded-xl" src="{{asset('/images/lary-avatar.svg')}}" alt="">
+        <section class="col-span-8 col-start-5 mt-10 space-y-6">
+
+            <form class="border border-gray-200 p-6 rounded-xl" action="{{route('comment.store', $post->slug)}}" method="post">
+                @csrf
+                <header class="flex items-center">
+                    <img src="{{asset('/images/lary-avatar.svg')}}" alt="" width="40" height="40" class="rounded-full">
+                    <h2 class="ml-4">Want to participate?</h2>
+                </header>
+                <div class="mt-6">
+                    <textarea name="body" class="w-full text-small border focus:outline-none focus:ring p-2 @error('body') is-invalid @enderror" cols="10" rows="5" placeholder="Quick, think of something to say!" required></textarea>
+                    @error('body')
+                        <div class="text-red-500 text-sm">{{ $message }}</div>
+                    @enderror
                 </div>
-                <div>
-                    <header>
-                        <h3 class="font-bold">Jone Doe</h3>
-                        <p class="text-xs mb-4">Posted 
-                            <time>8 month ago</time>
-                        </p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus placeat distinctio ducimus odit porro, rem, minima magnam esse facere inventore et in modi accusantium illo! A voluptate rerum explicabo perspiciatis?</p>
-                    </header>
+                <div class="flex justify-end">
+                    <button class="px-10 py-2 rounded-3xl bg-blue-500 uppercase font-semibold text-white text-sm hover:bg-blue-700">post</button>
                 </div>
-            </article>
+            </form>
+
+            @foreach ($post->comments as $comment)
+                <article class="flex bg-gray-100 p-6 rounded-xl border border-gray-200 space-x-4">
+                    <div class="w-1/5">
+                        <img class="w-32 rounded-xl" src="{{asset('/images/lary-avatar.svg')}}" alt="">
+                    </div>
+                    <div>
+                        <header>
+                            <h3 class="font-bold">{{ $comment->user->name }}</h3>
+                            <p class="text-xs mb-4">Posted: 
+                                <time> {{ $comment->created_at->format('D-m-y') }} </time>
+                            </p>
+                            <p>{{ $comment->body }}</p>
+                        </header>
+                    </div>
+                </article>
+            @endforeach
+            
         </section>
         {{-- end comment section --}}
 

@@ -14,6 +14,7 @@
             </form>
         @endauth
         @guest
+            <a href="{{route('login')}}" class="text-xs font-bold uppercase ml-3">Login</a>
             <a href="{{route('register')}}" class="text-xs font-bold uppercase ml-3">Register</a>
         @endguest
         <a href="#subscribe" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
