@@ -25,6 +25,10 @@ class AuthController extends Controller {
 
         // attempt to authentication log in user
         if (Auth::attempt($validated)) {
+            if(Auth::user()->role == 'admin'){
+                sweetalert()->AddSuccess('Welcome Back Chef');
+                return redirect()->route('dashboard');
+            }
             sweetalert()->AddSuccess('Welcome Back Chef');
             return redirect()->route('home');
         }

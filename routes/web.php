@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get( '/', [PostController::class, 'index'] )->name( 'home' );
 Route::get( '/post/{slug}', [PostController::class, 'show'] )->name( 'post' );
@@ -21,7 +23,13 @@ Route::middleware(['guest'])->group(function () {
     Route::post( '/register/store', [AuthController::class, 'store'] )->name( 'user.store' );
 });
 
-
-Route::post( '/logout', [AuthController::class, 'logout'] )->name( 'logout' )->middleware( 'auth' );
+Route::middleware(['auth'])->group(function() {
+    Route::post( '/logout', [AuthController::class, 'logout'] )->name( 'logout' );
+});
 
 Route::post( '/newsletter', [NewsletterController::class, 'store'] )->name( 'newsletter' );
+
+// admin section route
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
