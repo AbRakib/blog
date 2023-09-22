@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PostController extends Controller {
     /**
@@ -17,24 +19,60 @@ class PostController extends Controller {
                 ->orWhere( 'body', 'like', '%' . request( 'search' ) . '%' )
                 ->get();
         } else {
-            $posts = Post::latest()->paginate(9)->withQueryString();
+            $posts = Post::latest()->paginate( 9 )->withQueryString();
         }
         $categories = Category::latest()->get();
-        return view('posts.index', compact( 'posts', 'categories' ) );
+        return view( 'posts.index', compact( 'posts', 'categories' ) );
+    }
+
+    public function posts() {
+        $posts = Post::latest()->get();
+        return view( 'admin.post.index', compact( 'posts' ) );
+    }
+
+    public function post( $slug ) {
+        $post = Post::where( 'slug', $slug )->first();
+        return view( 'admin.post.show', compact( 'post' ) );
     }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create() {
-        //
+        $categories = Category::all();
+        return view( 'admin.post.create', compact( 'categories' ) );
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store( Request $request ) {
-        //
+
+        $validated = $request->validate( [
+            'title'       => 'required|unique:posts|max:255',
+            'category_id' => 'required',
+            'excerpt'     => 'required|min:200',
+            'body'        => 'required|min:255',
+        ] );
+
+        if ( $request->hasFile( 'image' ) ) {
+            $file = $request->file( 'image' );
+            $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->move( 'uploads/', $fileName );
+        }
+
+        Post::create( [
+            'user_id'     => Auth::user()->id,
+            'category_id' => $request->category_id,
+            'title'       => $request->title,
+            'slug'        => Str::slug( $request->title ),
+            'excerpt'     => $request->excerpt,
+            'body'        => $request->body,
+            'image'       => $fileName,
+        ] );
+
+        sweetalert()->addSuccess( 'Your Post Has Been Stored' );
+        return redirect()->route( 'admin.posts' );
     }
 
     /**
@@ -64,6 +102,10 @@ class PostController extends Controller {
      * Remove the specified resource from storage.
      */
     public function destroy( string $id ) {
-        //
+        $post = Post::findOrFail( $id );
+        $post->delete();
+
+        sweetalert()->addSuccess( 'Post delete successfully done!!!' );
+        return redirect()->route( 'admin.posts' );
     }
 }

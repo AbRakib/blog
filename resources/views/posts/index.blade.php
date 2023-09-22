@@ -6,7 +6,11 @@
         class="transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">
             <div class="py-6 px-5 lg:flex">
                 <div class="flex-1 lg:mr-8">
-                    <img src="{{ asset('images/illustration-1.png') }}" alt="Blog Post illustration" class="rounded-xl">
+                    @if ($posts[0]->image)
+                        <img src="{{ asset('uploads/'. $posts[0]->image) }}" alt="Blog Post illustration" class="rounded-xl">
+                    @else
+                        <img src="{{ asset('images/avatar.png') }}" alt="Blog Post illustration" class="rounded-xl">
+                    @endif
                 </div>
 
                 <div class="flex-1 flex flex-col justify-between">
@@ -67,7 +71,11 @@
                     class="transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl {{ $loop->iteration < 3 ? 'col-span-3' : 'col-span-2' }}">
                     <div class="py-6 px-5">
                         <div>
-                            <img src="{{ asset('images/illustration-3.png') }}" alt="Blog Post illustration" class="rounded-xl">
+                            @if ($post->image)
+                                <img src="{{ asset('uploads/'. $post->image) }}" alt="Blog Post illustration" class="rounded-xl">
+                            @else
+                                <img src="{{ asset('images/illustration-1.png') }}" alt="Blog Post illustration" class="rounded-xl">
+                            @endif
                         </div>
 
                         <div class="mt-8 flex flex-col justify-between">

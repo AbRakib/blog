@@ -13,6 +13,7 @@ class Post extends Model {
         'category_id',
         'slug',
         'title',
+        'image',
         'excerpt',
         'body',
     ];
