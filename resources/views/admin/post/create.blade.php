@@ -24,7 +24,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputTitle4">Title</label>
-                            <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="inputTitle4" placeholder="Post Title" required>
+                            <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="inputTitle4" value="{{ old('title') }}" placeholder="Post Title" required>
                             @error('title')
                                 <span class="text-danger small">{{ $message }}</span>
                             @enderror
@@ -44,14 +44,14 @@
                     </div>
                     <div class="form-group">
                         <label for="excerpt">Excerpt</label>
-                        <textarea class="form-control @error('excerpt') is-invalid @enderror" name="excerpt" id="excerpt" cols="10" rows="5" required></textarea>
+                        <textarea class="form-control @error('excerpt') is-invalid @enderror" name="excerpt" id="excerpt" cols="10" rows="5" required>{{ old('excerpt') }}</textarea>
                         @error('excerpt')
                             <span class="text-danger small">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="body">Description</label>
-                        <textarea class="form-control @error('body') is-invalid @enderror" name="body" id="body" cols="10" rows="5" required></textarea>
+                        <textarea class="form-control @error('body') is-invalid @enderror" name="body" id="body" cols="10" rows="5" required>{{ old('body') }}</textarea>
                         @error('body')
                             <span class="text-danger small">{{ $message }}</span>
                         @enderror

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Post;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller {
     /**
@@ -58,7 +59,9 @@ class PostController extends Controller {
         if ( $request->hasFile( 'image' ) ) {
             $file = $request->file( 'image' );
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
-            $file->move( 'uploads/', $fileName );
+            $file = Image::make($request->file( 'image' ));
+            $file->resize(1180, 860);
+            $file->save( 'uploads/'. $fileName, 80 );
         }
 
         Post::create( [

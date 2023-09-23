@@ -4,7 +4,7 @@
     <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
         <div class="col-span-4 lg:text-center lg:pt-14 mb-10">
             @if ($post->image)
-                <img src="{{ asset('uploads/'. $post->image) }}" alt="Blog Post illustration" class="rounded-xl">
+                <img src="{{ asset('uploads/'. $post->image) }}" alt="Blog Post illustration" class="rounded-xl w-full">
             @else
                 <img src="{{ asset('images/illustration-1.png') }}" alt="Blog Post illustration" class="rounded-xl">
             @endif

@@ -7,9 +7,9 @@
             <div class="py-6 px-5 lg:flex">
                 <div class="flex-1 lg:mr-8">
                     @if ($posts[0]->image)
-                        <img src="{{ asset('uploads/'. $posts[0]->image) }}" alt="Blog Post illustration" class="rounded-xl">
+                        <img src="{{ asset('uploads/'. $posts[0]->image) }}" alt="Blog Post illustration" class="rounded-xl w-full">
                     @else
-                        <img src="{{ asset('images/avatar.png') }}" alt="Blog Post illustration" class="rounded-xl">
+                        <img src="{{ asset('images/illustration-1.png') }}" alt="Blog Post illustration" class="rounded-xl">
                     @endif
                 </div>
 
@@ -72,7 +72,7 @@
                     <div class="py-6 px-5">
                         <div>
                             @if ($post->image)
-                                <img src="{{ asset('uploads/'. $post->image) }}" alt="Blog Post illustration" class="rounded-xl">
+                                <img src="{{ asset('uploads/'. $post->image) }}" alt="Blog Post illustration" class="rounded-xl w-full">
                             @else
                                 <img src="{{ asset('images/illustration-1.png') }}" alt="Blog Post illustration" class="rounded-xl">
                             @endif

@@ -38,4 +38,5 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::post('/post-store', [PostController::class, 'store'])->name('admin.post.store');
     Route::get('/post-view/{slug}', [PostController::class, 'post'])->name('admin.post.view');
     Route::post('/post-delete/{id}', [PostController::class, 'destroy'])->name('admin.post.delete');
+
 });
