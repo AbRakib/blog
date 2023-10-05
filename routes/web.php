@@ -36,7 +36,8 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/posts', [PostController::class, 'posts'])->name('admin.posts');
     Route::get('/post-add', [PostController::class, 'create'])->name('admin.post.add');
     Route::post('/post-store', [PostController::class, 'store'])->name('admin.post.store');
+    Route::post('/post-update/{id}', [PostController::class, 'update'])->name('admin.post.update');
     Route::get('/post-view/{slug}', [PostController::class, 'post'])->name('admin.post.view');
+    Route::get('/post-edit/{id}', [PostController::class, 'edit'])->name('admin.post.edit');
     Route::post('/post-delete/{id}', [PostController::class, 'destroy'])->name('admin.post.delete');
-
 });

@@ -36,7 +36,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Post Components:</h6>
-                <a class="collapse-item" href="{{route('admin.posts')}}">Post Total</a>
+                <a class="collapse-item" href="{{route('admin.posts')}}">Post List</a>
                 <a class="collapse-item" href="{{route('admin.post.add')}}">Post Add</a>
             </div>
         </div>
@@ -53,7 +53,7 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Category Components:</h6>
-                <a class="collapse-item" href="">Category Total</a>
+                <a class="collapse-item" href="">Category List</a>
                 <a class="collapse-item" href="">Category Add</a>
             </div>
         </div>
@@ -70,7 +70,7 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Comment Components:</h6>
-                <a class="collapse-item" href="">Comment Total</a>
+                <a class="collapse-item" href=""><i class="fa-solid fa-comment"></i> Comment List</a>
                 <a class="collapse-item" href="">Comment Add</a>
             </div>
         </div>

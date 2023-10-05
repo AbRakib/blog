@@ -138,7 +138,7 @@
                                     <td>{{ $post->created_at }}</td>
                                     <td>
                                         <div class="btn-group-vertical">
-                                            <button class="btn btn-sm btn-secondary">Edit</button>
+                                            <a class="btn btn-sm btn-secondary" href="{{route('admin.post.edit', $post->id)}}">Edit</a>
                                             <a class="btn btn-sm btn-primary" href="{{route('admin.post.view', $post->slug)}}">View</a>
                                             <form action="{{route('admin.post.delete', $post->id)}}" method="post">
                                                 @csrf

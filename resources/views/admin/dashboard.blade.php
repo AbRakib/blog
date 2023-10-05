@@ -106,6 +106,31 @@
     <script src="{{asset('admin/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('admin/js/demo/chart-pie-demo.js')}}"></script>
 
+    <!-- ck editor link -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+
+    <!-- ckeditor script  -->
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#excerpt' ) )
+            .then( editor => {
+                    console.log( editor );
+            } )
+            .catch( error => {
+                    console.error( error );
+            } );
+    </script>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#body' ) )
+            .then( editor => {
+                    console.log( editor );
+            } )
+            .catch( error => {
+                    console.error( error );
+            } );
+    </script>
+
 </body>
 
 </html>
