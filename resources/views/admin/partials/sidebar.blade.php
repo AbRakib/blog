@@ -30,14 +30,14 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-book-open"></i>
             <span>Posts</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Post Components:</h6>
-                <a class="collapse-item" href="{{route('admin.posts')}}">Post List</a>
-                <a class="collapse-item" href="{{route('admin.post.add')}}">Post Add</a>
+                <a class="collapse-item" href="{{route('admin.posts')}}"><i class="fas fa-book"></i> Post List</a>
+                <a class="collapse-item" href="{{route('admin.post.add')}}"><i class="fas fa-book-medical"></i> Post Add</a>
             </div>
         </div>
     </li>
@@ -46,15 +46,15 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories"
             aria-expanded="true" aria-controls="collapseCategories">
-            <i class="fas fa-fw fa-wrench"></i>
+            <i class="fas fa-swatchbook"></i>
             <span>Categories</span>
         </a>
         <div id="collapseCategories" class="collapse" aria-labelledby="headingCategories"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Category Components:</h6>
-                <a class="collapse-item" href="">Category List</a>
-                <a class="collapse-item" href="">Category Add</a>
+                <a class="collapse-item" href="{{ route('admin.categories') }}"><i class="fas fa-tags"></i> Category List</a>
+                <a class="collapse-item" href="{{ route('admin.category.add') }}"><i class="fas fa-tag"></i> Category Add</a>
             </div>
         </div>
     </li>
@@ -63,15 +63,15 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseComments"
             aria-expanded="true" aria-controls="collapseComments">
-            <i class="fas fa-fw fa-wrench"></i>
+            <i class="fas fa-stream"></i>
             <span>Comments</span>
         </a>
         <div id="collapseComments" class="collapse" aria-labelledby="headingComments"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Comment Components:</h6>
-                <a class="collapse-item" href=""><i class="fa-solid fa-comment"></i> Comment List</a>
-                <a class="collapse-item" href="">Comment Add</a>
+                <a class="collapse-item" href=""><i class="fas fa-comments"></i> Comment List</a>
+                <a class="collapse-item" href=""><i class="fas fa-comment-medical"></i> Comment Add</a>
             </div>
         </div>
     </li>
@@ -87,14 +87,14 @@
     <!-- Nav Item - Users -->
     <li class="nav-item">
         <a class="nav-link" href="">
-            <i class="fas fa-fw fa-chart-area"></i>
+            <i class="fas fa-user-astronaut"></i>
             <span>Users</span></a>
     </li>
 
     <!-- Nav Item - Settings -->
     <li class="nav-item">
         <a class="nav-link" href="Settings.html">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-cogs"></i>
             <span>Settings</span></a>
     </li>
 

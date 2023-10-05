@@ -21,6 +21,7 @@
             <div class="card-body">
                 <form enctype="multipart/form-data" action="{{route('admin.post.store')}}" method="post">
                     @csrf
+                    <input type="hidden" name="required">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputTitle4">Title</label>
@@ -44,14 +45,18 @@
                     </div>
                     <div class="form-group">
                         <label for="excerpt">Excerpt</label>
-                        <textarea class="form-control @error('excerpt') is-invalid @enderror" name="excerpt" id="excerpt" cols="10" rows="5" required>{{ old('excerpt') }}</textarea>
+                        <div>
+                            <textarea class="form-control @error('excerpt') is-invalid @enderror" name="excerpt" cols="10" rows="5">{{ old('excerpt') }}</textarea>
+                        </div>
                         @error('excerpt')
                             <span class="text-danger small">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="body">Description</label>
-                        <textarea class="form-control @error('body') is-invalid @enderror" name="body" id="body" cols="10" rows="5" required>{{ old('body') }}</textarea>
+                        <div>
+                            <textarea class="form-control @error('body') is-invalid @enderror" name="body" cols="10" rows="5">{{ old('body') }}</textarea>
+                        </div>
                         @error('body')
                             <span class="text-danger small">{{ $message }}</span>
                         @enderror
@@ -64,7 +69,7 @@
                         @enderror
                     </div>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
             </div>

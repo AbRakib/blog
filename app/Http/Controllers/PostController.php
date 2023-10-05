@@ -64,15 +64,15 @@ class PostController extends Controller {
             $file->save( 'uploads/' . $fileName, 80 );
         }
 
-        Post::create( [
-            'user_id'     => Auth::user()->id,
-            'category_id' => $request->category_id,
-            'title'       => $request->title,
-            'slug'        => Str::slug( $request->title ),
-            'excerpt'     => $request->excerpt,
-            'body'        => $request->body,
-            'image'       => $fileName,
-        ] );
+        $post = new Post();
+        $post->user_id = Auth::user()->id;
+        $post->category_id = $request->category_id;
+        $post->title = $request->title;
+        $post->slug = Str::slug( $request->title );
+        $post->excerpt = $request->excerpt;
+        $post->body = $request->body;
+        $post->image = $fileName;
+        $post->save();
 
         sweetalert()->addSuccess( 'Your Post Has Been Stored' );
         return redirect()->route( 'admin.posts' );

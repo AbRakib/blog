@@ -35,7 +35,6 @@
 
             <!-- Main Content -->
             <div id="content">
-
                 <!-- Topbar -->
                 @include('admin.partials.topbar')
                 <!-- End of Topbar -->
@@ -43,17 +42,14 @@
                 <!-- Begin Page Content -->
                 @yield('contents')
                 <!-- /.container-fluid -->
-
             </div>
             <!-- End of Main Content -->
 
             <!-- Footer -->
             @include('admin.partials.footer')
             <!-- End of Footer -->
-
         </div>
         <!-- End of Content Wrapper -->
-
     </div>
     <!-- End of Page Wrapper -->
 
@@ -101,10 +97,6 @@
 
     <!-- Page level custom scripts -->
     <script src="{{asset('admin/js/demo/datatables-demo.js')}}"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="{{asset('admin/js/demo/chart-area-demo.js')}}"></script>
-    <script src="{{asset('admin/js/demo/chart-pie-demo.js')}}"></script>
 
     <!-- ck editor link -->
     <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>

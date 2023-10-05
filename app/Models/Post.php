@@ -23,7 +23,10 @@ class Post extends Model {
     }
 
     public function category() {
-        return $this->belongsTo( Category::class, 'category_id', 'id' );
+        return $this->belongsTo( Category::class, 'category_id', 'id' )->withDefault([
+            'title' => 'None',
+            'slug' => '#',
+        ]);
     }
 
     public function comments() {

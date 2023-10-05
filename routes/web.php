@@ -40,4 +40,13 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/post-view/{slug}', [PostController::class, 'post'])->name('admin.post.view');
     Route::get('/post-edit/{id}', [PostController::class, 'edit'])->name('admin.post.edit');
     Route::post('/post-delete/{id}', [PostController::class, 'destroy'])->name('admin.post.delete');
+
+    // category create/edit/update/delete/store
+    Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories');
+    Route::get('/category-add', [CategoryController::class, 'create'])->name('admin.category.add');
+    Route::post('/category-store', [CategoryController::class, 'store'])->name('admin.category.store');
+    Route::post('/category-update/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
+    // Route::get('/category-view/{slug}', [CategoryController::class, 'post'])->name('admin.category.view');
+    Route::get('/category-edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
+    Route::post('/category-delete/{id}', [CategoryController::class, 'destroy'])->name('admin.category.delete');
 });
