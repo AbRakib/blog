@@ -29,6 +29,8 @@ class CategoryController extends Controller {
      * Store a newly created resource in storage.
      */
     public function store( Request $request ) {
+
+        $request->all();
         // validation 
         $validated = $request->validate( [
             'title'       => 'required|unique:posts|max:255',
@@ -36,8 +38,8 @@ class CategoryController extends Controller {
         ] );
 
         $category = new Category();
-        $category->title = $request->name;
-        $category->slug = Str::slug($request->name);
+        $category->title = $request->title;
+        $category->slug = Str::slug($request->title);
         $category->body = $request->body;
         $category->save();
 

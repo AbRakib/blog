@@ -27,8 +27,8 @@
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="inputTitle4">Category Name</label>
-                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="inputTitle4" value="{{ old('name') }}" placeholder="Category Name" required>
-                                    @error('name')
+                                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" id="inputTitle4" value="{{ old('title') }}" placeholder="Category Title" required>
+                                    @error('title')
                                         <span class="text-danger small">{{ $message }}</span>
                                     @enderror
                                 </div>

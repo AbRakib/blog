@@ -1,6 +1,19 @@
 <!doctype html>
 
-<title>Laravel From Scratch Blog</title>
+{{-- seo tags start --}}
+<meta charset="UTF-8">
+<meta name="description" content="Author: arakib, arakib.com, ">
+<meta name="keywords" content="arakib, Rakib, News, news, current news, cricket, sports, sport, content, title, tag, name, latest news, new news, update news, a, rakib, ARAKIB, dev, devnews, newsdev, DevNews, NewsDev, newsDev, devNews, de, deve, new, news, newses">
+<link rel="canonical" href="https://www.arakib.com/content">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="google-site-verification" content="">
+<meta name="robots" content="noindex,nofollow">
+{{-- seo tags end --}}
+
+<title>NewsDev | Latest Best News From DEV News</title>
+<link href="https://arakib.com/upload/settings/645377e5d8f95.jpg" rel="icon">
+
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">

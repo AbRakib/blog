@@ -110,6 +110,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Title</th>
                                 <th>Excerpt</th>
                                 <th>User</th>
@@ -120,6 +121,7 @@
                         </thead>
                         <tfoot>
                             <tr>
+                                <th>Id</th>
                                 <th>Title</th>
                                 <th>Excerpt</th>
                                 <th>User</th>
@@ -131,6 +133,7 @@
                         <tbody>
                             @foreach ($posts as $post)
                                 <tr>
+                                    <td>{{ $post->id }}</td>
                                     <td>{{ $post->title }}</td>
                                     <td>{{ $post->excerpt }}</td>
                                     <td>{{ $post->user->name }}</td>

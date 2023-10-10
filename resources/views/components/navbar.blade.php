@@ -1,7 +1,8 @@
 <nav class="md:flex md:justify-between md:items-center">
     <div>
-        <a href="/">
-            <img src="{{ asset('images/logo.svg') }}" alt="Laracasts Logo" width="165" height="16">
+        <a class="font-semibold text-lg" href="{{ route('home') }}">
+            <!--<img src="{{ asset('images/logo.svg') }}" alt="Laracasts Logo" width="165" height="16">-->
+            <i>News<span class="text-red-600">Dev</span></i>
         </a>
     </div>
 
