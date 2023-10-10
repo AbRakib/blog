@@ -88,11 +88,11 @@
                                 </div>
 
                                 <div class="mt-4">
-                                    <h1 class="text-3xl">
+                                    <h2 class="text-3xl">
                                         <a class="hover:text-yellow-500 transition" href="{{ route('post', $post->slug) }}" rel="noopener noreferrer">
                                             {{ $post->title }}
                                         </a>
-                                    </h1>
+                                    </h2>
 
                                     <span class="mt-2 block text-gray-400 text-xs">
                                         Published: <time>{{ $post->created_at->diffForHumans() }}</time>
