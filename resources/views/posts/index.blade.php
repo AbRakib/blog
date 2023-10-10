@@ -7,9 +7,9 @@
             <div class="py-6 px-5 lg:flex">
                 <div class="flex-1 lg:mr-8">
                     @if ($posts[0]->image)
-                        <img src="{{ asset('uploads/'. $posts[0]->image) }}" alt="Blog Post illustration" class="rounded-xl w-full">
+                        <img src="{{ asset('uploads/'. $posts[0]->image) }}" alt="{{$posts[0]->title}}" class="rounded-xl w-full">
                     @else
-                        <img src="{{ asset('images/illustration-1.png') }}" alt="Blog Post illustration" class="rounded-xl">
+                        <img src="{{ asset('images/illustration-1.png') }}" alt="NewsDev Latest News" class="rounded-xl">
                     @endif
                 </div>
 
@@ -18,12 +18,12 @@
                         <div class="space-x-2">
                             <a href="{{ route('category', $posts[0]->category->slug) }}"
                             class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold hover:text-white hover:bg-blue-500"
-                            style="font-size: 10px">{{ $posts[0]->category->title }}</a>
+                            style="font-size: 10px" rel="noopener noreferrer">{{ $posts[0]->category->title }}</a>
                         </div>
 
                         <div class="mt-4">
                             <h1 class="text-3xl">
-                                <a class="hover:text-yellow-500 transition" href="{{ route('post', $posts[0]->slug) }}">
+                                <a class="hover:text-yellow-500 transition" href="{{ route('post', $posts[0]->slug) }}" rel="noopener noreferrer">
                                     {{ $posts[0]->title }}
                                 </a>
                             </h1>
@@ -40,10 +40,10 @@
 
                     <footer class="flex justify-between items-center mt-8">
                         <div class="flex items-center text-sm w-3/5">
-                            <img class="w-10" src="{{ asset('images/avatar.png') }}" alt="Lary avatar">
+                            <img class="w-10" src="{{ asset('images/avatar.png') }}" alt="{{ $posts[0]->title }}">
                             <div class="ml-3">
                                 <h5 class="font-bold">
-                                    <a class="text-yellow-500 hover:text-pink-500 transition" href="{{route('author', $posts[0]->user->slug)}}">
+                                    <a rel="noopener noreferrer" class="text-yellow-500 hover:text-pink-500 transition" href="{{route('author', $posts[0]->user->slug)}}">
                                         {{ $posts[0]->user->name }}
                                     </a>
                                 </h5>
@@ -53,7 +53,7 @@
 
                         <div class="hidden lg:block">
                             <a href="{{route('post', $posts[0]->slug)}} "
-                            class="transition-colors duration-300 text-xs font-semibold bg-gray-200 hover:bg-gray-300 rounded-full py-2 px-8"
+                            class="transition-colors duration-300 text-xs font-semibold bg-gray-200 hover:bg-gray-300 rounded-full py-2 px-8" rel="noopener noreferrer"
                             >Read More</a>
                         </div>
                     </footer>
@@ -72,9 +72,9 @@
                     <div class="py-6 px-5">
                         <div>
                             @if ($post->image)
-                                <img src="{{ asset('uploads/'. $post->image) }}" alt="Blog Post illustration" class="rounded-xl w-full">
+                                <img src="{{ asset('uploads/'. $post->image) }}" alt="{{ $post->title }}" class="rounded-xl w-full">
                             @else
-                                <img src="{{ asset('images/illustration-1.png') }}" alt="Blog Post illustration" class="rounded-xl">
+                                <img src="{{ asset('images/illustration-1.png') }}" alt="NewsDev Latest News" class="rounded-xl">
                             @endif
                         </div>
 
@@ -83,13 +83,13 @@
                                 <div class="space-x-2">
                                     <a href="{{ route('category', $post->category->slug) }}"
                                     class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold hover:text-white hover:bg-blue-500"
-                                    style="font-size: 10px">
+                                    style="font-size: 10px" rel="noopener noreferrer" >
                                     {{ $post->category->title }} </a>
                                 </div>
 
                                 <div class="mt-4">
                                     <h1 class="text-3xl">
-                                        <a class="hover:text-yellow-500 transition" href="{{ route('post', $post->slug) }}">
+                                        <a class="hover:text-yellow-500 transition" href="{{ route('post', $post->slug) }}" rel="noopener noreferrer">
                                             {{ $post->title }}
                                         </a>
                                     </h1>
@@ -108,10 +108,10 @@
 
                             <footer class="flex justify-between items-center mt-8">
                                 <div class="flex items-center text-sm">
-                                    <img class="w-10" src="{{ asset('images/avatar.png') }}" alt="Lary avatar">
+                                    <img class="w-10" src="{{ asset('images/avatar.png') }}" alt="{{ $post->title }}">
                                     <div class="ml-3">
                                         <h5 class="font-bold">
-                                            <a class="text-yellow-500 hover:text-pink-500 transition" href="{{route('author', $post->user->slug)}}">
+                                            <a class="text-yellow-500 hover:text-pink-500 transition" href="{{route('author', $post->user->slug)}}" rel="noopener noreferrer">
                                                 {{ $post->user->name }}
                                             </a>
                                         </h5>
@@ -121,7 +121,7 @@
 
                                 <div>
                                     <a href="{{route('post', $post->slug)}}"
-                                    class="transition-colors duration-300 text-xs font-semibold bg-gray-200 hover:bg-gray-300 rounded-full py-2 px-7"
+                                    class="transition-colors duration-300 text-xs font-semibold bg-gray-200 hover:bg-gray-300 rounded-full py-2 px-7" rel="noopener noreferrer"
                                     >Read More</a>
                                 </div>
                             </footer>

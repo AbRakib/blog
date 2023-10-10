@@ -2,8 +2,8 @@
 
 {{-- seo tags start --}}
 <meta charset="UTF-8">
-<meta name="description" content="Author: arakib, arakib.com, ">
-<meta name="keywords" content="arakib, Rakib, News, news, current news, cricket, sports, sport, content, title, tag, name, latest news, new news, update news, a, rakib, ARAKIB, dev, devnews, newsdev, DevNews, NewsDev, newsDev, devNews, de, deve, new, news, newses">
+<meta name="description" content="NewsDev - There are over 1000+ Newspaper published daily from online news sources. All latest news are post in English Language.We informing readers with knowledge & inspiration to help create a more...">
+<meta name="keywords" content="arakib, Rakib, News, news, current news, cricket, sports, sport, content, title, tag, name, latest news, new news, update news, a, rakib, ARAKIB, dev, devnews, newsdev, DevNews, NewsDev, newsDev, devNews, de, deve, new, news, newses, Newspaper, knowledge, inspiration, Newspaper published daily, Daily News, English News, english newspaper">
 <link rel="canonical" href="https://www.arakib.com/content">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

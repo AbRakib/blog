@@ -4,9 +4,9 @@
     <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
         <div class="col-span-4 lg:text-center lg:pt-14 mb-10">
             @if ($post->image)
-                <img src="{{ asset('uploads/'. $post->image) }}" alt="Blog Post illustration" class="rounded-xl w-full">
+                <img src="{{ asset('uploads/'. $post->image) }}" alt="{{ $post->title }}" class="rounded-xl w-full">
             @else
-                <img src="{{ asset('images/illustration-1.png') }}" alt="Blog Post illustration" class="rounded-xl">
+                <img src="{{ asset('images/illustration-1.png') }}" alt="NewsDev Latest News" class="rounded-xl">
             @endif
             <p class="mt-4 block text-gray-400 text-xs">
                 Published: <time> {{ $post->created_at->diffForHumans() }} </time>
@@ -16,7 +16,7 @@
                 <img class="w-10" src="{{ asset('images/avatar.png') }}" alt="Lary avatar">
                 <div class="ml-3 text-left">
                     <h5 class="font-bold"> 
-                        <a class="text-yellow-500 hover:text-pink-500 transition" href="{{route('author', $post->user->slug)}}">
+                        <a class="text-yellow-500 hover:text-pink-500 transition" href="{{route('author', $post->user->slug)}}" rel="noopener noreferrer nofollow" >
                             {{ $post->user->name }}
                         </a>
                     </h5>
@@ -43,7 +43,7 @@
                 <div class="space-x-2">
                     <a href="{{ route('category', $post->category->slug) }}"
                         class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold hover:text-white hover:bg-blue-500"
-                        style="font-size: 10px">
+                        style="font-size: 10px" rel="noopener noreferrer nofollow">
                         {{ $post->category->title }}
                     </a>
                 </div>
@@ -83,7 +83,7 @@
             @foreach ($post->comments as $comment)
                 <article class="flex bg-gray-100 p-6 rounded-xl border border-gray-200 space-x-4">
                     <div class="w-1/5">
-                        <img class="rounded-xl w-10" src="{{ asset('images/avatar.png') }}" alt="">
+                        <img class="rounded-xl w-10" src="{{ asset('images/avatar.png') }}" alt="{{ $post->title }}">
                     </div>
                     <div>
                         <header>
