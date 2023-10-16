@@ -20,7 +20,7 @@
                             {{ $post->user->name }}
                         </a>
                     </h5>
-                    <h6>Mascot at Laracasts</h6>
+                    <h6>News at NewsDev</h6>
                 </div>
             </div>
         </div>
