@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\AdminSectionController;
 use App\Http\Controllers\AuthController;
@@ -35,6 +36,8 @@ Route::prefix('admin')->name('admin.')->group(function (): void {
     // Authenticated Routes
     Route::middleware('auth')->group(function (): void {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::resource('categories', CategoryController::class);
+        Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
         Route::resource('tags', TagController::class);
         Route::get('/tags', [TagController::class, 'index'])->name('tags');
 
@@ -43,7 +46,7 @@ Route::prefix('admin')->name('admin.')->group(function (): void {
                 continue;
             }
 
-            if ($menuItem['path'] === 'tags') {
+            if (in_array($menuItem['path'], ['categories', 'tags'], true)) {
                 continue;
             }
 
