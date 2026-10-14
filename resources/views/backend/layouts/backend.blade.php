@@ -14,6 +14,7 @@
         <link href="{{ asset('dashboard-html/dist/assets/vendors/apexcharts/apexcharts.css') }}" rel="stylesheet">
         <link href="{{ asset('dashboard-html/dist/assets/vendors/keenicons/styles.bundle.css') }}" rel="stylesheet">
         <link href="{{ asset('dashboard-html/dist/assets/css/styles.css') }}" rel="stylesheet">
+        <link href="{{ asset('vendor/toastr/toastr.min.css') }}" rel="stylesheet">
         @stack('styles')
     </head>
     <body class="antialiased flex h-full text-base text-foreground bg-background demo1 kt-sidebar-fixed kt-header-fixed">
@@ -80,22 +81,37 @@
                 </div>
             </aside>
             <div class="kt-wrapper flex grow flex-col min-w-0">
-                <header class="kt-header fixed top-0 z-10 start-0 end-0 flex items-stretch shrink-0 bg-background" data-kt-sticky="true" data-kt-sticky-class="border-b border-border" data-kt-sticky-name="header" id="header">
-                    <div class="kt-container-fixed flex justify-between items-center gap-3">
-                        <div class="flex items-center gap-3">
+                <header class="kt-header fixed top-0 z-10 start-0 end-0 flex items-stretch shrink-0 bg-background border-b border-border/70" data-kt-sticky="true" data-kt-sticky-class="border-b border-border shadow-xs" data-kt-sticky-name="header" id="header">
+                    <div class="kt-container-fixed flex justify-between items-center gap-3 h-full">
+                        <div class="flex items-center gap-4 min-w-0">
                             <button class="kt-btn kt-btn-icon kt-btn-ghost lg:hidden" data-kt-drawer-toggle="#sidebar" type="button" aria-label="Open navigation" title="Open navigation">
                                 <i class="ki-filled ki-menu" aria-hidden="true"></i>
                             </button>
-                            <nav class="text-sm font-medium text-mono" aria-label="Breadcrumb">
-                                <span>Admin</span>
-                                <span class="text-muted-foreground mx-2">/</span>
-                                <span>@yield('breadcrumb', 'Dashboard')</span>
+                            <nav class="hidden md:flex items-center gap-7 lg:gap-8 overflow-x-auto whitespace-nowrap text-sm text-[#1f2a44]" aria-label="Dashboard navigation">
+                                <a class="font-semibold text-black" href="{{ route('admin.dashboard') }}" @if (request()->routeIs('admin.dashboard')) aria-current="page" @endif>Home</a>
+                                <a class="font-medium hover:text-primary" href="{{ route('home') }}">Profiles</a>
+                                <a class="font-medium hover:text-primary" href="#account-heading">My Account</a>
+                                <a class="font-medium hover:text-primary" href="{{ route('home') }}">Network</a>
+                                <a class="font-medium hover:text-primary" href="{{ route('home') }}">Store</a>
+                                <a class="font-medium hover:text-primary" href="{{ route('admin.login') }}">Authentication</a>
+                                <a class="font-medium hover:text-primary" href="{{ route('contact') }}">Help</a>
                             </nav>
                         </div>
-                        <div class="flex items-center gap-3 min-w-0">
-                            <span class="text-sm text-secondary-foreground truncate max-w-40">{{ auth()->user()->name }}</span>
-                            <a class="kt-btn kt-btn-icon kt-btn-ghost" href="{{ route('home') }}" aria-label="View website" title="View website">
-                                <i class="ki-filled ki-exit-right" aria-hidden="true"></i>
+                        <div class="flex items-center gap-2.5 sm:gap-4 min-w-0">
+                            <button class="kt-btn kt-btn-icon kt-btn-ghost text-gray-500 hover:text-primary" type="button" aria-label="Search" title="Search">
+                                <i class="ki-filled ki-magnifier text-xl" aria-hidden="true"></i>
+                            </button>
+                            <button class="hidden sm:inline-flex kt-btn kt-btn-icon kt-btn-ghost text-gray-500 hover:text-primary" type="button" aria-label="Tasks" title="Tasks">
+                                <i class="ki-filled ki-some-files text-xl" aria-hidden="true"></i>
+                            </button>
+                            <button class="hidden sm:inline-flex kt-btn kt-btn-icon kt-btn-ghost text-gray-500 hover:text-primary" type="button" aria-label="Messages" title="Messages">
+                                <i class="ki-filled ki-message-text-2 text-xl" aria-hidden="true"></i>
+                            </button>
+                            <a class="hidden sm:inline-flex kt-btn kt-btn-icon kt-btn-ghost text-gray-500 hover:text-primary" href="{{ route('admin.dashboard') }}" aria-label="Apps" title="Apps">
+                                <i class="ki-filled ki-element-11 text-xl" aria-hidden="true"></i>
+                            </a>
+                            <a class="block rounded-full border-2 border-green-500 p-0.5" href="#account-heading" aria-label="{{ auth()->user()->name }} account" title="{{ auth()->user()->name }}">
+                                <img class="size-8 rounded-full object-cover" src="{{ asset('dashboard-html/dist/assets/media/avatars/300-2.png') }}" alt="{{ auth()->user()->name }}">
                             </a>
                         </div>
                     </div>
@@ -130,6 +146,26 @@
         <script src="{{ asset('dashboard-html/dist/assets/vendors/ktui/ktui.min.js') }}"></script>
         <script src="{{ asset('dashboard-html/dist/assets/vendors/apexcharts/apexcharts.min.js') }}"></script>
         <script src="{{ asset('dashboard-html/dist/assets/js/layouts/demo1.js') }}"></script>
+        <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('vendor/toastr/toastr.min.js') }}"></script>
+        <script>
+            toastr.options = {
+                closeButton: true,
+                progressBar: true,
+                positionClass: 'toast-top-right',
+                timeOut: 5000,
+            };
+
+            @foreach (['success', 'info', 'warning', 'error'] as $flashType)
+                @if (session($flashType))
+                    toastr.{{ $flashType }}(@json(session($flashType)));
+                @endif
+            @endforeach
+
+            @if ($errors->any())
+                toastr.error(@json($errors->first()));
+            @endif
+        </script>
         @stack('scripts')
     </body>
 </html>

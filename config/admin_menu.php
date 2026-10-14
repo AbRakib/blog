@@ -72,20 +72,6 @@ return [
             'icon' => 'ki-abstract-26',
         ],
         [
-            'title' => 'Resources & Tools',
-            'description' => 'Curate developer resources and recommended tools.',
-            'route' => 'admin.resources-tools',
-            'path' => 'resources-tools',
-            'icon' => 'ki-wrench',
-        ],
-        [
-            'title' => 'Users & Authors',
-            'description' => 'Manage author profiles and user accounts.',
-            'route' => 'admin.users-authors',
-            'path' => 'users-authors',
-            'icon' => 'ki-profile-user',
-        ],
-        [
             'title' => 'Appearance',
             'description' => 'Configure the homepage, menus, footer, logo, and theme.',
             'route' => 'admin.appearance',

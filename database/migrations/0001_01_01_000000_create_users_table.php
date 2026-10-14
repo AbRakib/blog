@@ -20,13 +20,27 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->timestamps();
+            $table->unsignedTinyInteger('status')->default(1)->comment('0=inactive,1=active');
+            $table->timestamp('created_at')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->boolean('deleted')->default(false);
+            $table->timestamp('deleted_at')->nullable();
+            $table->unsignedBigInteger('deleted_by')->nullable();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
+            $table->unsignedTinyInteger('status')->default(1)->comment('0=inactive,1=active');
             $table->timestamp('created_at')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->boolean('deleted')->default(false);
+            $table->timestamp('deleted_at')->nullable();
+            $table->unsignedBigInteger('deleted_by')->nullable();
         });
 
         Schema::create('sessions', function (Blueprint $table) {
@@ -36,6 +50,14 @@ return new class extends Migration
             $table->text('user_agent')->nullable();
             $table->longText('payload');
             $table->integer('last_activity')->index();
+            $table->unsignedTinyInteger('status')->default(1)->comment('0=inactive,1=active');
+            $table->timestamp('created_at')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->boolean('deleted')->default(false);
+            $table->timestamp('deleted_at')->nullable();
+            $table->unsignedBigInteger('deleted_by')->nullable();
         });
     }
 

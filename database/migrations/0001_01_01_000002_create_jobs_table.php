@@ -18,7 +18,14 @@ return new class extends Migration
             $table->unsignedSmallInteger('attempts');
             $table->unsignedInteger('reserved_at')->nullable();
             $table->unsignedInteger('available_at');
-            $table->unsignedInteger('created_at');
+            $table->unsignedTinyInteger('status')->default(1)->comment('0=inactive,1=active');
+            $table->timestamp('created_at')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->boolean('deleted')->default(false);
+            $table->timestamp('deleted_at')->nullable();
+            $table->unsignedBigInteger('deleted_by')->nullable();
         });
 
         Schema::create('job_batches', function (Blueprint $table) {
@@ -30,7 +37,14 @@ return new class extends Migration
             $table->longText('failed_job_ids');
             $table->mediumText('options')->nullable();
             $table->integer('cancelled_at')->nullable();
-            $table->integer('created_at');
+            $table->unsignedTinyInteger('status')->default(1)->comment('0=inactive,1=active');
+            $table->timestamp('created_at')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->boolean('deleted')->default(false);
+            $table->timestamp('deleted_at')->nullable();
+            $table->unsignedBigInteger('deleted_by')->nullable();
             $table->integer('finished_at')->nullable();
         });
 
@@ -42,6 +56,14 @@ return new class extends Migration
             $table->longText('payload');
             $table->longText('exception');
             $table->timestamp('failed_at')->useCurrent();
+            $table->unsignedTinyInteger('status')->default(1)->comment('0=inactive,1=active');
+            $table->timestamp('created_at')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->boolean('deleted')->default(false);
+            $table->timestamp('deleted_at')->nullable();
+            $table->unsignedBigInteger('deleted_by')->nullable();
 
             $table->index(['connection', 'queue', 'failed_at']);
         });

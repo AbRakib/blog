@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\AdminSectionController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
@@ -34,9 +35,15 @@ Route::prefix('admin')->name('admin.')->group(function (): void {
     // Authenticated Routes
     Route::middleware('auth')->group(function (): void {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::resource('tags', TagController::class);
+        Route::get('/tags', [TagController::class, 'index'])->name('tags');
 
         foreach (config('admin_menu.items') as $menuItem) {
             if (! isset($menuItem['path'])) {
+                continue;
+            }
+
+            if ($menuItem['path'] === 'tags') {
                 continue;
             }
 

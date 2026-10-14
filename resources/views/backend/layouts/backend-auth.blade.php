@@ -13,6 +13,7 @@
         <link href="{{ asset('dashboard-html/dist/assets/vendors/apexcharts/apexcharts.css') }}" rel="stylesheet">
         <link href="{{ asset('dashboard-html/dist/assets/vendors/keenicons/styles.bundle.css') }}" rel="stylesheet">
         <link href="{{ asset('dashboard-html/dist/assets/css/styles.css') }}" rel="stylesheet">
+        <link href="{{ asset('vendor/toastr/toastr.min.css') }}" rel="stylesheet">
         <style>
             .page-bg {
                 background-image: url("{{ asset('dashboard-html/dist/assets/media/images/2600x1200/bg-10.png') }}");
@@ -52,5 +53,25 @@
         <script src="{{ asset('dashboard-html/dist/assets/js/core.bundle.js') }}"></script>
         <script src="{{ asset('dashboard-html/dist/assets/vendors/ktui/ktui.min.js') }}"></script>
         <script src="{{ asset('dashboard-html/dist/assets/vendors/apexcharts/apexcharts.min.js') }}"></script>
+        <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('vendor/toastr/toastr.min.js') }}"></script>
+        <script>
+            toastr.options = {
+                closeButton: true,
+                progressBar: true,
+                positionClass: 'toast-top-right',
+                timeOut: 5000,
+            };
+
+            @foreach (['success', 'info', 'warning', 'error'] as $flashType)
+                @if (session($flashType))
+                    toastr.{{ $flashType }}(@json(session($flashType)));
+                @endif
+            @endforeach
+
+            @if ($errors->any())
+                toastr.error(@json($errors->first()));
+            @endif
+        </script>
     </body>
 </html>
