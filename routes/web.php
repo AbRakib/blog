@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminSectionController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,3 +20,30 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('frontend.contact');
 })->name('contact');
+
+Route::prefix('admin')->name('admin.')->group(function (): void {
+
+    // Guest Routes
+    Route::middleware('guest')->group(function (): void {
+        Route::get('/login', [AuthController::class, 'login'])->name('login');
+        Route::post('/login', [AuthController::class, 'authenticate'])->name('login.store');
+        Route::get('/register', [AuthController::class, 'register'])->name('register');
+        Route::post('/register', [AuthController::class, 'store'])->name('register.store');
+    });
+
+    // Authenticated Routes
+    Route::middleware('auth')->group(function (): void {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        foreach (config('admin_menu.items') as $menuItem) {
+            if (! isset($menuItem['path'])) {
+                continue;
+            }
+
+            Route::get('/'.$menuItem['path'], AdminSectionController::class)
+                ->defaults('section', $menuItem['path'])
+                ->name(str_replace('admin.', '', $menuItem['route']));
+        }
+    });
+
+});
